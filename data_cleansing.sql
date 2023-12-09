@@ -55,9 +55,10 @@ UPDATE
 SET
     product = LOWER(product);
 
--- Replace missing values in quantity_ordered with 0
+-- Replace missing values 
 UPDATE
     order_schema."sales"
 SET
     quantity_ordered = COALESCE(quantity_ordered, '0'),
-    price_each = COALESCE(price_each, '0');
+    price_each = COALESCE(price_each, '0'),
+    purchase_address = COALESCE(purchase_address, 'No address');
